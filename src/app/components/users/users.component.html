@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="header">
+    <h1>👥 User Management</h1>
+    <p class="subtitle">Manage your users and their roles</p>
+  </div>
+  
+  <div class="add-user-btn">
+    <button (click)="showAddUserForm = true" class="btn-add">➕ Add New Client</button>
+  </div>
+  
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading users...</p>
+    </div>
+  }
+  
+  @if (error) {
+    <div class="error">❌ {{ error }}</div>
+  }
+  
+  @if (!loading && !error) {
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">{{ users.length }}</div>
+        <div class="stat-label">Total Users</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getTrainerCount() }}</div>
+        <div class="stat-label">Trainers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getClientCount() }}</div>
+        <div class="stat-label">Clients</div>
+      </div>
+    </div>
+    
+    <div class="table-wrapper">
+      <table class="users-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>User Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </thead>
+        <tbody>
+          @for (user of users; track user.id) {
+            <tr>
+              <td class="id-cell">{{ user.id }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                <span class="badge" [class]="getBadgeClass(user.userType)">
+                  {{ user.userType }}
+                </span>
+              </td>
+              <td>
+                <span class="status-badge" [class.active]="user.isActive">
+                  {{ user.isActive ? '✅ Active' : '❌ Inactive' }}
+                </span>
+              </td>
+              <td>
+                <button (click)="editUser(user)" class="btn-edit">✏️ Edit</button>
+                <button (click)="deleteUser(user.id)" class="btn-delete">🗑️ Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<!-- Add User Modal -->
+@if (showAddUserForm) {
+  <div class="modal-overlay" (click)="closeModals()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h3>➕ Add New Client</h3>
+      <form (ngSubmit)="addUser()">
+        <input type="text" 
+               [(ngModel)]="newUser.firstName" 
+               name="firstName" 
+               placeholder="First Name *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="newUser.lastName" 
+               name="lastName" 
+               placeholder="Last Name *" 
+               required>
+        <input type="email" 
+               [(ngModel)]="newUser.email" 
+               name="email" 
+               placeholder="Email *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="newUser.phoneNumber" 
+               name="phoneNumber" 
+               placeholder="Phone Number">
+        <div class="modal-buttons">
+          <button type="button" (click)="closeModals()">Cancel</button>
+          <button type="submit">Save Client</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<!-- Edit User Modal -->
+@if (showEditUserForm) {
+  <div class="modal-overlay" (click)="closeModals()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h3>✏️ Edit User</h3>
+      <form (ngSubmit)="updateUser()">
+        <input type="text" 
+               [(ngModel)]="editUserData.firstName" 
+               name="firstName" 
+               placeholder="First Name *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="editUserData.lastName" 
+               name="lastName" 
+               placeholder="Last Name *" 
+               required>
+        <input type="email" 
+               [(ngModel)]="editUserData.email" 
+               name="email" 
+               placeholder="Email *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="editUserData.phoneNumber" 
+               name="phoneNumber" 
+               placeholder="Phone Number">
+        <select [(ngModel)]="editUserData.userType" name="userType">
+          <option value="Client">Client</option>
+          <option value="Trainer">Trainer</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <div class="modal-buttons">
+          <button type="button" (click)="closeModals()">Cancel</button>
+          <button type="submit">Update User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

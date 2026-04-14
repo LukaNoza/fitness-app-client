@@ -1,0 +1,277 @@
+<div class="booking-page">
+  <div class="booking-container">
+    <div class="booking-header">
+      <div class="header-icon">📅</div>
+      <h1>Book a Training Session</h1>
+      <p>Choose your trainer, gym and time</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="booking-form">
+      
+      <!-- Client Selection (მხოლოდ Admin-ისთვის და Trainer-ისთვის) -->
+        @if (isAdminOrTrainer()) {
+        <div class="form-group">
+            <label class="form-label">
+            <span class="label-icon">👤</span> Client Email
+            </label>
+            <div class="email-input-wrapper">
+            <input 
+                type="text" 
+                list="clients-list"
+                [(ngModel)]="selectedClientEmail"
+                (change)="onClientEmailSelect()"
+                (input)="onClientEmailInput()"
+                name="clientEmail"
+                placeholder="Start typing client email or name..."
+                class="email-input"
+                autocomplete="off">
+            <datalist id="clients-list">
+                @for (client of filteredClients; track client.id) {
+                <option [value]="client.email">
+                    {{ client.firstName }} {{ client.lastName }} ({{ client.email }})
+                </option>
+                }
+            </datalist>
+            </div>
+            @if (selectedClientInfo) {
+            <div class="client-preview">
+                <div class="preview-row">
+                <span class="preview-icon">👤</span>
+                <span class="preview-text">{{ selectedClientInfo.firstName }} {{ selectedClientInfo.lastName }}</span>
+                </div>
+                <div class="preview-row">
+                <span class="preview-icon">📧</span>
+                <span class="preview-text">{{ selectedClientInfo.email }}</span>
+                </div>
+                <div class="preview-row">
+                <span class="preview-icon">📞</span>
+                <span class="preview-text">{{ selectedClientInfo.phoneNumber || 'No phone' }}</span>
+                </div>
+            </div>
+            }
+            <input type="hidden" [(ngModel)]="booking.clientId" name="clientId">
+        </div>
+        }
+      
+      <!-- Trainer Selection -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">🏋️</span> Select Trainer
+        </label>
+        <div class="custom-select-wrapper">
+          <select 
+            [(ngModel)]="booking.trainerId" 
+            name="trainerId" 
+            (change)="onTrainerChange()" 
+            required 
+            class="custom-select"
+            [class.has-value]="booking.trainerId">
+            <option value="" disabled selected>— Choose a trainer —</option>
+            @for (trainer of trainers; track trainer.id) {
+              <option [value]="trainer.id">
+                {{ trainer.name }} • {{ trainer.specialization }} • {{ trainer.hourlyRate }}₾/h
+                @if (trainer.workDays) {
+                  ({{ trainer.workDays }} {{ trainer.workStart }} - {{ trainer.workEnd }})
+                }
+              </option>
+            }
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+        
+        <!-- Work Hours Info -->
+        @if (selectedTrainer && selectedTrainer.workDays) {
+          <div class="work-hours-info">
+            ⏰ Working hours: {{ selectedTrainer.workDays }} • {{ selectedTrainer.workStart }} - {{ selectedTrainer.workEnd }}
+          </div>
+        }
+        
+        <!-- Trainer Preview -->
+        @if (selectedTrainer) {
+          <div class="trainer-preview">
+            <div class="preview-row">
+              <span class="preview-icon">🏋️</span>
+              <span class="preview-text">{{ selectedTrainer.name }}</span>
+            </div>
+            <div class="preview-row">
+              <span class="preview-icon">⚡</span>
+              <span class="preview-text">{{ selectedTrainer.specialization }}</span>
+            </div>
+            <div class="preview-row">
+              <span class="preview-icon">💰</span>
+              <span class="preview-text">{{ selectedTrainer.hourlyRate }} ₾ / hour</span>
+            </div>
+            @if (selectedTrainer.rating > 0) {
+              <div class="preview-row">
+                <span class="preview-icon">⭐</span>
+                <span class="preview-text">{{ selectedTrainer.rating }}/5</span>
+              </div>
+            }
+            @if (selectedTrainer.experienceYears) {
+              <div class="preview-row">
+                <span class="preview-icon">📅</span>
+                <span class="preview-text">{{ selectedTrainer.experienceYears }} years experience</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Gym Selection -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">🏢</span> Select Gym
+        </label>
+        <div class="custom-select-wrapper">
+          <select 
+            [(ngModel)]="booking.gymId" 
+            name="gymId" 
+            (change)="onGymChange()" 
+            required 
+            class="custom-select"
+            [class.has-value]="booking.gymId">
+            <option value="" disabled selected>— Choose a gym —</option>
+            @for (gym of gyms; track gym.id) {
+              <option [value]="gym.id">
+                {{ gym.name }} • {{ gym.city }} ({{ gym.openTime }} - {{ gym.closeTime }})
+              </option>
+            }
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+        
+        <!-- Gym Hours Info -->
+        @if (selectedGym) {
+          <div class="work-hours-info">
+            🕐 Gym hours: {{ selectedGym.openTime }} - {{ selectedGym.closeTime }}
+          </div>
+        }
+        
+        <!-- Gym Preview -->
+        @if (selectedGym) {
+          <div class="gym-preview">
+            <div class="preview-row">
+              <span class="preview-icon">🏢</span>
+              <span class="preview-text">{{ selectedGym.name }}</span>
+            </div>
+            <div class="preview-row">
+              <span class="preview-icon">📍</span>
+              <span class="preview-text">{{ selectedGym.address }}, {{ selectedGym.city }}</span>
+            </div>
+            <div class="preview-row">
+              <span class="preview-icon">📞</span>
+              <span class="preview-text">{{ selectedGym.phoneNumber }}</span>
+            </div>
+            <div class="preview-row">
+              <span class="preview-icon">⏰</span>
+              <span class="preview-text">{{ selectedGym.openTime }} - {{ selectedGym.closeTime }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Date Selection -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">📅</span> Select Date
+        </label>
+        <input 
+          type="date" 
+          [(ngModel)]="booking.bookingDate" 
+          name="bookingDate" 
+          (change)="loadAvailableSlots()" 
+          required 
+          [min]="minDate" 
+          class="date-input">
+      </div>
+
+      <!-- Available Time Slots -->
+      @if (booking.trainerId && booking.gymId && booking.bookingDate) {
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-icon">⏰</span> Available Time Slots
+          </label>
+          
+          @if (loadingSlots) {
+            <div class="loading-slots">
+              <div class="mini-spinner"></div>
+              <span>Loading available slots...</span>
+            </div>
+          } @else if (availableSlots.length > 0) {
+            <div class="time-slots-grid">
+              @for (slot of availableSlots; track slot.id) {
+                <button 
+                  type="button" 
+                  class="time-slot-card" 
+                  [class.selected]="selectedSlotId === slot.id"
+                  (click)="selectSlot(slot)">
+                  <div class="slot-time">{{ slot.startTime }} - {{ slot.endTime }}</div>
+                  <div class="slot-spots">
+                    @if (slot.availableSpots > 2) {
+                      <span class="spots-high">✅ {{ slot.availableSpots }} spots left</span>
+                    } @else {
+                      <span class="spots-low">⚠️ Only {{ slot.availableSpots }} spot left</span>
+                    }
+                  </div>
+                </button>
+              }
+            </div>
+          } @else if (!loadingSlots) {
+            <div class="no-slots-message">
+              <span class="no-slots-icon">😢</span>
+              <p>No available slots for this date</p>
+              <small>Please choose another date</small>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Start Time and End Time -->
+      <div class="form-row">
+        <div class="form-group half">
+          <label class="form-label">⏰ Start Time</label>
+          <input 
+            type="time" 
+            [(ngModel)]="booking.startTime" 
+            name="startTime" 
+            class="form-input" 
+            readonly
+            placeholder="Select a time slot">
+        </div>
+        <div class="form-group half">
+          <label class="form-label">⏰ End Time</label>
+          <input 
+            type="time" 
+            [(ngModel)]="booking.endTime" 
+            name="endTime" 
+            class="form-input" 
+            readonly
+            placeholder="Select a time slot">
+        </div>
+      </div>
+
+      <!-- Hidden client ID -->
+      <input type="hidden" [(ngModel)]="booking.clientId" name="clientId">
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        [disabled]="loading || !selectedSlotId" 
+        class="btn-submit">
+        @if (loading) {
+          <span class="btn-spinner"></span>
+          Booking...
+        } @else {
+          ✅ Book Session
+        }
+      </button>
+
+      <!-- Message -->
+      @if (message) {
+        <div class="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
+          {{ message }}
+        </div>
+      }
+    </form>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="bookings-container">
+  <div class="header">
+    <h1>📅 Bookings</h1>
+    <p class="subtitle">Manage your training sessions</p>
+  </div>
+  
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading bookings...</p>
+    </div>
+  }
+  
+  @if (error) {
+    <div class="error">❌ {{ error }}</div>
+  }
+  
+  @if (!loading && !error) {
+    <!-- Stats Cards -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">{{ bookings.length }}</div>
+        <div class="stat-label">Total Bookings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getPendingCount() }}</div>
+        <div class="stat-label">Pending</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getConfirmedCount() }}</div>
+        <div class="stat-label">Confirmed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getCompletedCount() }}</div>
+        <div class="stat-label">Completed</div>
+      </div>
+    </div>
+    
+    <!-- Bookings Grid -->
+    <div class="bookings-grid">
+      @for (booking of bookings; track booking.id) {
+        <div class="booking-card" 
+             [class]="'booking-card status-' + booking.status.toLowerCase()"
+             [class.removing]="removingBookingId === booking.id"
+             [class.highlight]="booking.id === highlightBookingId">
+          
+          <!-- Card Header -->
+          <div class="booking-header">
+            <span class="booking-status" [class]="booking.status.toLowerCase()">
+              {{ booking.status }}
+            </span>
+            <span class="booking-date">{{ booking.bookingDate | date:'mediumDate' }}</span>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="booking-body">
+            <div class="booking-detail">
+              <span class="detail-icon">🕐</span>
+              <span class="detail-label">Time:</span>
+              <span class="detail-value">{{ booking.startTime }} - {{ booking.endTime }}</span>
+            </div>
+            <div class="booking-detail">
+              <span class="detail-icon">💰</span>
+              <span class="detail-label">Amount:</span>
+              <span class="detail-value price">{{ booking.totalAmount }} ₾</span>
+            </div>
+            <div class="booking-detail">
+              <span class="detail-icon">👤</span>
+              <span class="detail-label">Client:</span>
+              <span class="detail-value">{{ booking.clientName || 'Client ID: ' + booking.clientId }}</span>
+            </div>
+            <div class="booking-detail">
+              <span class="detail-icon">🏋️</span>
+              <span class="detail-label">Trainer:</span>
+              <span class="detail-value">{{ booking.trainerName || 'Trainer ID: ' + booking.trainerId }}</span>
+            </div>
+            <div class="booking-detail">
+              <span class="detail-icon">🏢</span>
+              <span class="detail-label">Gym:</span>
+              <span class="detail-value">{{ booking.gymName || 'Gym ID: ' + booking.gymId }}</span>
+            </div>
+            <div class="booking-detail">
+              <span class="detail-icon">📅</span>
+              <span class="detail-label">Created:</span>
+              <span class="detail-value">{{ booking.createdAt | date:'short' }}</span>
+            </div>
+          </div>
+          
+          <!-- Card Footer - Action Buttons -->
+          <div class="booking-footer">
+            @if (booking.status === 'Pending') {
+              @if (isTrainer || isAdmin) {
+                <button (click)="confirmBooking(booking.id)" class="btn-confirm">
+                  ✅ Confirm
+                </button>
+              }
+              <button (click)="cancelBooking(booking.id)" class="btn-cancel">
+                ❌ Cancel
+              </button>
+            }
+            
+            @if (booking.status === 'Confirmed') {
+              @if (isTrainer || isAdmin) {
+                <button (click)="completeBooking(booking.id)" class="btn-complete">
+                  ✅ Complete
+                </button>
+              }
+              <button (click)="cancelBooking(booking.id)" class="btn-cancel">
+                ❌ Cancel
+              </button>
+            }
+            
+            @if (booking.status === 'Completed') {
+              @if (!booking.hasReview && isClient) {
+                <button (click)="openReviewModal(booking)" class="btn-review">
+                  ⭐ Leave a Review
+                </button>
+              } @else if (booking.hasReview) {
+                <span class="reviewed-badge">⭐ Reviewed</span>
+              } @else {
+                <span class="completed-badge">✓ Session Completed</span>
+              }
+            }
+            
+            <!-- 🔥 Cancelled სტატუსი აღარ ჩანს, რადგან ვფილტრავთ -->
+          </div>
+          
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- Review Modal -->
+@if (showReviewModal && selectedBooking) {
+  <app-review-modal
+    [bookingId]="selectedBooking.id"
+    [trainerId]="selectedBooking.trainerId"
+    [trainerName]="selectedBooking.trainerName"
+    [bookingDate]="selectedBooking.bookingDate"
+    (onClose)="closeReviewModal()"
+    (onSuccess)="onReviewSuccess()">
+  </app-review-modal>
+}

@@ -1,0 +1,184 @@
+<div class="container">
+  <div class="header">
+    <h1>🏢 Fitness Gyms</h1>
+    <p class="subtitle">Find the best gyms in your city</p>
+  </div>
+  
+  <!-- Add Gym Button - მხოლოდ Admin-ისთვის -->
+  @if (isAdmin()) {
+    <div class="add-gym-btn">
+      <button (click)="showAddGymForm = true" class="btn-add">➕ Add New Gym</button>
+    </div>
+  }
+  
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading gyms...</p>
+    </div>
+  }
+  
+  @if (error) {
+    <div class="error">❌ {{ error }}</div>
+  }
+  
+  @if (!loading && !error) {
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">{{ gyms.length }}</div>
+        <div class="stat-label">Total Gyms</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getActiveGymsCount() }}</div>
+        <div class="stat-label">Active Gyms</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getCitiesCount() }}</div>
+        <div class="stat-label">Cities</div>
+      </div>
+    </div>
+    
+    <div class="table-wrapper">
+      <table class="gyms-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Hours</th>
+            <th>Status</th>
+            @if (isAdmin()) {
+              <th>Actions</th>
+            }
+          </thead>
+        <tbody>
+          @for (gym of gyms; track gym.id) {
+            <tr [class.inactive]="!gym.isActive">
+              <td class="id-cell">{{ gym.id }}</td>
+              <td><strong>{{ gym.name }}</strong></td>
+              <td>{{ gym.address }}</td>
+              <td>{{ gym.city }}</td>
+              <td>{{ gym.phoneNumber }}</td>
+              <td class="hours-cell">{{ gym.openTime }} - {{ gym.closeTime }}</td>
+              <td>
+                <span class="status-badge" [class.active]="gym.isActive">
+                  {{ gym.isActive ? '✅ Active' : '❌ Inactive' }}
+                </span>
+              </td>
+              @if (isAdmin()) {
+                <td class="actions-cell">
+                  <button (click)="editGym(gym)" class="btn-edit">✏️ Edit</button>
+                  <button (click)="deleteGym(gym.id)" class="btn-delete">🗑️ Delete</button>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+       </table>
+    </div>
+  }
+</div>
+
+<!-- Add Gym Modal -->
+@if (showAddGymForm) {
+  <div class="modal-overlay" (click)="closeModals()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h3>🏢 Add New Gym</h3>
+      <form (ngSubmit)="addGym()">
+        <input type="text" 
+               [(ngModel)]="newGym.name" 
+               name="name" 
+               placeholder="Gym Name *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="newGym.address" 
+               name="address" 
+               placeholder="Address *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="newGym.city" 
+               name="city" 
+               placeholder="City *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="newGym.phoneNumber" 
+               name="phoneNumber" 
+               placeholder="Phone Number *" 
+               required>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Open Time</label>
+            <input type="time" 
+                   [(ngModel)]="newGym.openTime" 
+                   name="openTime" 
+                   required>
+          </div>
+          <div class="form-group">
+            <label>Close Time</label>
+            <input type="time" 
+                   [(ngModel)]="newGym.closeTime" 
+                   name="closeTime" 
+                   required>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" (click)="closeModals()">Cancel</button>
+          <button type="submit">Save Gym</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<!-- Edit Gym Modal -->
+@if (showEditGymForm) {
+  <div class="modal-overlay" (click)="closeModals()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h3>✏️ Edit Gym</h3>
+      <form (ngSubmit)="updateGym()">
+        <input type="text" 
+               [(ngModel)]="editGymData.name" 
+               name="name" 
+               placeholder="Gym Name *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="editGymData.address" 
+               name="address" 
+               placeholder="Address *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="editGymData.city" 
+               name="city" 
+               placeholder="City *" 
+               required>
+        <input type="text" 
+               [(ngModel)]="editGymData.phoneNumber" 
+               name="phoneNumber" 
+               placeholder="Phone Number *" 
+               required>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Open Time</label>
+            <input type="time" 
+                   [(ngModel)]="editGymData.openTime" 
+                   name="openTime" 
+                   required>
+          </div>
+          <div class="form-group">
+            <label>Close Time</label>
+            <input type="time" 
+                   [(ngModel)]="editGymData.closeTime" 
+                   name="closeTime" 
+                   required>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" (click)="closeModals()">Cancel</button>
+          <button type="submit">Update Gym</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

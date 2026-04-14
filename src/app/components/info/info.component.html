@@ -1,0 +1,17 @@
+<div class="info-container" [style.background]="getCurrentTopic().color">
+  <div class="info-content">
+    <div class="info-header">
+      <span class="info-icon">{{ getCurrentTopic().icon }}</span>
+      <h1>{{ getCurrentTopic().title }}</h1>
+      <p class="info-description">{{ getCurrentTopic().description }}</p>
+    </div>
+    
+    <div class="info-body" [innerHTML]="getCurrentTopic().longDescription">
+    </div>
+    
+    <div class="info-actions">
+      <button (click)="goBack()" class="btn-back">← Go Back</button>
+      <button (click)="getStarted()" class="btn-get-started">🚀 Get Started</button>
+    </div>
+  </div>
+</div>

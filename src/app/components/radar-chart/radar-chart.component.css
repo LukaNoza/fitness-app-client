@@ -1,0 +1,73 @@
+.radar-container {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 100%);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}
+
+.radar-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.radar-title h3 {
+  color: #00ffff;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.radar-title p {
+  color: #a0a0c0;
+  font-size: 0.8rem;
+  margin: 5px 0 0;
+}
+
+.radar-container {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 100%);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}
+
+/* აიძულე labels ჰორიზონტალურად */
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+.radar-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.radar-title h3 {
+  color: #00ffff;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.radar-title p {
+  color: #a0a0c0;
+  font-size: 0.8rem;
+  margin: 5px 0 0;
+}

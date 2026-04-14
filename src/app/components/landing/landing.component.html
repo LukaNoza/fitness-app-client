@@ -1,0 +1,338 @@
+<!-- ═══════════════════════════════════════════ -->
+<!--  HERO SECTION                              -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <div class="container hero-content">
+    <h1 class="hero-title">
+      Keep Your Body<br>
+      <span class="gradient-text">Fit & Strong</span>
+    </h1>
+    <p class="hero-sub">
+      Train with expert coaches, book sessions instantly,<br>
+      and track your progress — all in one place.
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" (click)="getStarted()">
+        Start Today
+        <span class="btn-arrow">→</span>
+      </button>
+      <button class="btn btn-outline" (click)="goToAbout()">About Me</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  FITNESS TRAINING SECTION (3 cards)        -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="fitness-training">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Our Fitness Training</p>
+      <h2 class="section-title">Upcoming Classes</h2>
+      <button class="btn-more" (click)="goToClasses()">More Class</button>
+    </div>
+    <div class="training-grid">
+      <div class="training-card">
+        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg" alt="Pilates">
+        <h3>Pilates Training</h3>
+        <p>Strengthen your core, improve flexibility and posture.</p>
+        <button class="card-link" (click)="goToYogaClass()">Read More →</button>
+      </div>
+      <div class="training-card">
+        <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg" alt="Aerobic">
+        <h3>Aerobic Training</h3>
+        <p>High-energy cardio to burn fat and boost endurance.</p>
+        <button class="card-link" (click)="getStarted()">Read More →</button>
+      </div>
+      <div class="training-card">
+        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" alt="CrossFit">
+        <h3>CrossFit Workout</h3>
+        <p>Functional movements at high intensity for real results.</p>
+        <button class="card-link" (click)="getStarted()">Read More →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  PANNER (Marquee)                           -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="panner">
+  <h2>Focus On Your <span>Fitness</span> Not Your Loss</h2>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  ABOUT SECTION                              -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="about">
+  <div class="container about-inner">
+    <div class="about-text">
+      <p class="section-label">About</p>
+      <h2>Respect Your Body,<br>It's the Only One You Get</h2>
+      <p>It is a long established fact that a reader will be distracted by the readable content.</p>
+      <div class="about-cards">
+        <div class="about-card">
+          <h3>Motivation</h3>
+          <p>Long established fact that a reader will be distracted</p>
+        </div>
+        <div class="about-card">
+          <h3>Inspire</h3>
+          <p>Will be distracted by readable content using Lorem Ipsum</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-image">
+      <img src="https://images.pexels.com/photos/3757946/pexels-photo-3757946.jpeg" alt="Man exercising">
+      <button class="btn-primary" (click)="goToSchedule()">Get Started</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  BENEFITS SECTION                           -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="benefits">
+  <div class="container benefits-grid">
+    <div class="benefit-item">
+      <span class="benefit-num">01</span>
+      <p>Fitness Training</p>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-num">02</span>
+      <p>Regular Routine</p>
+    </div>
+    <div class="benefit-item">
+      <span class="benefit-num">03</span>
+      <p>Diet Maintenance</p>
+    </div>
+    <div class="benefit-item benefit-google">
+      <i class="fab fa-google"></i>
+      <div>
+        <p>Review on Google</p>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SWIPER / TESTIMONIALS                      -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonial-card">
+      <div class="testimonial-img">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Nattasha">
+      </div>
+      <div class="testimonial-text">
+        <h4>Nattasha</h4>
+        <p>Athletics / Trainer</p>
+        <div class="stars">★★★★★</div>
+        <p>"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!--  TRAINERS SECTION (3 განსხვავებული ფოტო)                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="trainers">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Our Trainers</p>
+        <h2 class="section-title">We Trained You to Gain</h2>
+      </div>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg" alt="Trainer Amanda">
+        <div class="trainer-info">
+          <h4>Amanda</h4>
+          <p>Crossfit Expert, Nutrition & Rehab</p>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" alt="Trainer Madison">
+        <div class="trainer-info">
+          <h4>Madison Froning</h4>
+          <p>Crossfit Expert, Nutrition & Rehab</p>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <img src="https://images.pexels.com/photos/260447/pexels-photo-260447.jpeg" alt="Trainer Joshua">
+        <div class="trainer-info">
+          <h4>Joshua Frankilin</h4>
+          <p>Crossfit Expert, Nutrition & Rehab</p>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  GYM AMENITIES SECTION                      -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="amenities">
+  <div class="container amenities-inner">
+    <div class="amenities-text">
+      <p class="section-label">Gym Amenities</p>
+      <h2>The Unique Standard</h2>
+      <p>It is a long established fact that a reader will be distracted by the readable content.</p>
+      <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg" alt="Video placeholder">
+    </div>
+    <div class="amenities-list">
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Lockers</h5>
+        <p>Secure lockers that work by you choosing a four digit code.</p>
+      </div>
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Changing Rooms</h5>
+        <p>Delicious, protein-packed gourmet shakes and more.</p>
+      </div>
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Fuel Bar</h5>
+        <p>Mini towels for class and lovely big towels for showers.</p>
+      </div>
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Complimentary Towels</h5>
+        <p>Secure lockers that work by you choosing a four digit code.</p>
+      </div>
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Wifi & Restrooms</h5>
+        <p>Stay connected and comfortable during your workout.</p>
+      </div>
+      <div class="amenity-item">
+        <h5><i class="far fa-check-circle"></i> Hot Showers & Hair Care</h5>
+        <p>What your body craves after an intense session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  OUR PLANS SECTION                          -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="plans">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Our Plans</p>
+      <h2 class="section-title">Choose the Program</h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <h3><i class="fas fa-heart"></i> Basic</h3>
+        <div class="plan-price">
+          <h4>$25 / month</h4>
+          <p>30% Off for Beginners</p>
+        </div>
+        <ul>
+          <li>1 Day Free Trial</li>
+          <li>20 min spin</li>
+          <li>20 min strength</li>
+          <li>50 Class Times</li>
+        </ul>
+        <button class="btn-outline" (click)="getStarted()">Get Started</button>
+      </div>
+      <div class="plan-card featured">
+        <h3><i class="fas fa-star"></i> Standard</h3>
+        <div class="plan-price">
+          <h4>$35 / month</h4>
+          <p>Most popular</p>
+        </div>
+        <ul>
+          <li>1 Day Free Trial</li>
+          <li>20 min spin</li>
+          <li>20 min strength</li>
+          <li>50 Class Times</li>
+        </ul>
+        <button class="btn-primary" (click)="getStarted()">Get Started</button>
+      </div>
+      <div class="plan-card">
+        <h3><i class="fas fa-gem"></i> Premium</h3>
+        <div class="plan-price">
+          <h4>$50 / month</h4>
+          <p>10% Off for Yoga Class</p>
+        </div>
+        <ul>
+          <li>1 Day Free Trial</li>
+          <li>20 min spin</li>
+          <li>20 min strength</li>
+          <li>50 Class Times</li>
+        </ul>
+        <button class="btn-outline" (click)="getStarted()">Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  EXTRA CARDS (Personal Training, Live Chat, Easy Booking) -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="extra-cards">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Premium Services</p>
+      <h2 class="section-title">Everything You Need<br><span class="gradient-text">to Succeed</span></h2>
+    </div>
+    <div class="extra-grid">
+      <div class="extra-card">
+        <div class="extra-icon">🏋️</div>
+        <h3>Personal Training</h3>
+        <p>Get one-on-one training sessions with expert fitness coaches tailored to your goals.</p>
+        <button class="extra-link" (click)="goToPersonalTraining()">Learn More →</button>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">💬</div>
+        <h3>Live Chat</h3>
+        <p>Communicate with your trainer in real-time, ask questions, and get instant feedback.</p>
+        <button class="extra-link" (click)="goToLiveChat()">Learn More →</button>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">📅</div>
+        <h3>Easy Booking</h3>
+        <p>Schedule your sessions at your convenience with our simple booking system.</p>
+        <button class="extra-link" (click)="goToEasyBooking()">Learn More →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  ARTICLES & NEWS                            -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="articles">
+  <div class="container">
+    <div class="articles-grid">
+      <div class="article-card">
+        <span>March 23, 2022</span>
+        <span class="article-cat">Fitness</span>
+        <h3>The 10 best exercises to do in your park</h3>
+        <p>There are many variations of passages of Lorem Ipsum available...</p>
+        <button class="read-more" (click)="goToBlog()">Read More</button>
+      </div>
+      <div class="article-card">
+        <span>March 22, 2022</span>
+        <span class="article-cat">Health</span>
+        <h3>How to Choose The Right Equipment For You</h3>
+        <p>There are many variations of passages of Lorem Ipsum available...</p>
+        <button class="read-more" (click)="goToBlog()">Read More</button>
+      </div>
+      <div class="article-card dark-card">
+        <span>March 21, 2022</span>
+        <span class="article-cat">Nutrition</span>
+        <h3>Simple Condition for all Around Fitness</h3>
+        <p>There are many variations of passages of Lorem Ipsum available...</p>
+        <button class="read-more light" (click)="goToBlog()">Read More</button>
+      </div>
+    </div>
+  </div>
+</section>

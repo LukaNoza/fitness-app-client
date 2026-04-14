@@ -1,0 +1,219 @@
+<div class="easy-booking-landing">
+  
+  <!-- ========================================== -->
+  <!-- 1. HERO SECTION -->
+  <!-- ========================================== -->
+  <section class="hero-section animate-on-scroll">
+    <div class="hero-overlay"></div>
+    <div class="back-button">
+        <button (click)="goBackToMain()" class="btn-back-main">
+        ← Back to Main Page
+        </button>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Book Your Session in <span class="gradient-text">Seconds</span>
+      </h1>
+      <p class="hero-subtitle">
+        Simple, fast, and hassle-free booking system. Find your trainer, choose a time, and confirm instantly.
+      </p>
+      <button class="btn-hero" (click)="bookNow()">
+        📅 Start Booking Now
+      </button>
+    </div>
+    <div class="hero-stats" #statsSection>
+      <div class="stat">
+        <span class="stat-number">{{ stats.bookings }}+</span>
+        <span class="stat-label">Bookings/Month</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ stats.time }}s</span>
+        <span class="stat-label">Average Booking Time</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ stats.satisfaction }}%</span>
+        <span class="stat-label">Satisfaction Rate</span>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ========================================== -->
+  <!-- 2. BENEFITS SECTION -->
+  <!-- ========================================== -->
+  <section class="benefits-section animate-on-scroll">
+    <h2 class="section-title">Why Choose Our Booking System?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card animate-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Instant Confirmation</h3>
+        <p>No waiting – your session is confirmed immediately</p>
+      </div>
+      <div class="benefit-card animate-card delay-1">
+        <div class="benefit-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Book from anywhere, anytime on any device</p>
+      </div>
+      <div class="benefit-card animate-card delay-2">
+        <div class="benefit-icon">🔄</div>
+        <h3>Easy Rescheduling</h3>
+        <p>Change your schedule with just one click</p>
+      </div>
+      <div class="benefit-card animate-card delay-3">
+        <div class="benefit-icon">🔔</div>
+        <h3>Smart Reminders</h3>
+        <p>Never miss a session with automatic notifications</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. HOW IT WORKS -->
+  <!-- ========================================== -->
+  <section class="how-it-works animate-on-scroll">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+      <div class="progress-line"></div>
+      <div class="step animate-step">
+        <div class="step-number">1</div>
+        <div class="step-icon">👤</div>
+        <h3>Choose Trainer</h3>
+        <p>Browse our list of expert trainers</p>
+      </div>
+      <div class="step animate-step delay-1">
+        <div class="step-number">2</div>
+        <div class="step-icon">📅</div>
+        <h3>Pick Date & Time</h3>
+        <p>Select from real-time availability</p>
+      </div>
+      <div class="step animate-step delay-2">
+        <div class="step-number">3</div>
+        <div class="step-icon">✅</div>
+        <h3>Confirm Booking</h3>
+        <p>Instant confirmation to your email</p>
+      </div>
+      <div class="step animate-step delay-3">
+        <div class="step-number">4</div>
+        <div class="step-icon">🏋️</div>
+        <h3>Show Up & Train</h3>
+        <p>Meet your trainer and start your journey</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. FEATURES SECTION -->
+  <!-- ========================================== -->
+  <section class="features-section animate-on-scroll">
+    <h2 class="section-title">Amazing Features</h2>
+    <div class="features-grid">
+      <div class="feature-item animate-feature">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Real-time Availability</h3>
+          <p>See open slots instantly without waiting</p>
+        </div>
+      </div>
+      <div class="feature-item animate-feature delay-1">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Instant Confirmation</h3>
+          <p>Your session is confirmed immediately</p>
+        </div>
+      </div>
+      <div class="feature-item animate-feature delay-2">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Easy Cancellation</h3>
+          <p>Cancel or reschedule with one click</p>
+        </div>
+      </div>
+      <div class="feature-item animate-feature delay-3">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Booking History</h3>
+          <p>Track all your past and upcoming sessions</p>
+        </div>
+      </div>
+      <div class="feature-item animate-feature delay-4">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Calendar Sync</h3>
+          <p>Sync with Google Calendar, iCal</p>
+        </div>
+      </div>
+      <div class="feature-item animate-feature delay-5">
+        <span class="feature-check">✓</span>
+        <div>
+          <h3>Email Reminders</h3>
+          <p>Get notified 24h before your session</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. PRICING -->
+  <!-- ========================================== -->
+  <section class="pricing-section animate-on-scroll">
+    <h2 class="section-title">Simple Pricing</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card animate-card">
+        <h3>Pay as You Go</h3>
+        <div class="price">80 ₾</div>
+        <p>per session</p>
+        <ul>
+          <li>✓ 1-hour session</li>
+          <li>✓ Any trainer</li>
+          <li>✓ Any gym</li>
+          <li>✓ Cancel anytime</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Book Now</button>
+      </div>
+      <div class="pricing-card popular animate-card delay-1">
+        <div class="popular-badge">Best Value</div>
+        <h3>Monthly Pass</h3>
+        <div class="price">600 ₾</div>
+        <p>8 sessions</p>
+        <ul>
+          <li>✓ Save 25%</li>
+          <li>✓ Priority booking</li>
+          <li>✓ Free rescheduling</li>
+          <li>✓ Nutrition guide included</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Get Started</button>
+      </div>
+      <div class="pricing-card animate-card delay-2">
+        <h3>Unlimited</h3>
+        <div class="price">1200 ₾</div>
+        <p>per month</p>
+        <ul>
+          <li>✓ Unlimited sessions</li>
+          <li>✓ 24/7 chat support</li>
+          <li>✓ Personal trainer</li>
+          <li>✓ Meal planning</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Get Started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. FINAL CTA + STICKY BUTTON -->
+  <!-- ========================================== -->
+  <section class="final-cta animate-on-scroll">
+    <div class="cta-content">
+      <h2>Ready to Start Your Fitness Journey?</h2>
+      <p>Book your first session today and get 20% off</p>
+      <button class="btn-final" (click)="bookNow()">📅 Book Now</button>
+    </div>
+  </section>
+
+  <!-- Sticky CTA Button -->
+  <div class="sticky-cta" [class.visible]="isSticky">
+    <button (click)="bookNow()" class="btn-sticky">
+      📅 Book Now
+    </button>
+  </div>
+
+</div>

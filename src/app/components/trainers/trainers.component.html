@@ -1,0 +1,134 @@
+<div class="trainers-container">
+  <div class="header">
+    <h1>🏋️ Our Trainers</h1>
+    <p class="subtitle">Professional fitness coaches ready to help you</p>
+  </div>
+
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading trainers...</p>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error">❌ {{ error }}</div>
+  }
+
+  @if (!loading && !error) {
+    <div class="trainers-grid">
+      @for (trainer of trainers; track trainer.id) {
+        <div class="trainer-card" [class.verified]="trainer.isVerified">
+          <div class="card-header">
+            <div class="avatar">
+              <span class="avatar-icon">🏋️</span>
+            </div>
+            <div class="trainer-info">
+              <h3>{{ trainer.name }}</h3>
+              <span class="specialization">{{ trainer.specialization }}</span>
+            </div>
+            @if (trainer.isVerified) {
+              <span class="verified-badge">✓ Verified</span>
+            }
+          </div>
+          <div class="card-body">
+            <div class="detail">
+              <span class="label">Experience:</span>
+              <span class="value">{{ trainer.experienceYears }} years</span>
+            </div>
+            <div class="detail">
+              <span class="label">Hourly Rate:</span>
+              <span class="value price">{{ trainer.hourlyRate }} ₾</span>
+            </div>
+            <div class="detail">
+              <span class="label">Rating:</span>
+              <span class="value rating">⭐ {{ trainer.rating }}/5</span>
+            </div>
+            @if (trainer.gyms && trainer.gyms.length > 0) {
+              <div class="detail">
+                <span class="label">Works at:</span>
+                <span class="value">{{ trainer.gyms[0].name }}</span>
+              </div>
+            }
+          </div>
+          <div class="card-footer">
+            <button class="btn-book" (click)="bookSession(trainer.id)">Book Session</button>
+            <button class="btn-profile" (click)="openProfile(trainer.id)">View Profile</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- Trainer Profile Modal -->
+@if (showProfileModal && selectedTrainer) {
+  <div class="modal-overlay" (click)="closeProfile()">
+    <div class="modal modal-profile" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>🏋️ {{ selectedTrainer.name }}</h2>
+        <button class="close-btn" (click)="closeProfile()">✖</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-avatar">🏋️</div>
+        
+        <div class="info-section">
+          <h3>📋 Personal Information</h3>
+          <div class="info-row">
+            <span class="info-label">Name:</span>
+            <span>{{ selectedTrainer.name }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Specialization:</span>
+            <span>{{ selectedTrainer.specialization }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Experience:</span>
+            <span>{{ selectedTrainer.experienceYears }} years</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Hourly Rate:</span>
+            <span class="price">{{ selectedTrainer.hourlyRate }} ₾ / hour</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Rating:</span>
+            <span>⭐ {{ selectedTrainer.rating }}/5</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Status:</span>
+            <span class="verified">{{ selectedTrainer.isVerified ? '✅ Verified Trainer' : '📝 Not Verified' }}</span>
+          </div>
+        </div>
+
+        @if (selectedTrainer.gyms && selectedTrainer.gyms.length > 0) {
+          <div class="info-section">
+            <h3>🏢 Works at</h3>
+            @for (gym of selectedTrainer.gyms; track gym.id) {
+              <div class="gym-info">
+                <strong>{{ gym.name }}</strong> - {{ gym.city }}
+              </div>
+            }
+          </div>
+        }
+
+        @if (selectedTrainer.workDays) {
+          <div class="info-section">
+            <h3>⏰ Working Hours</h3>
+            <div class="info-row">
+              <span class="info-label">Days:</span>
+              <span>{{ selectedTrainer.workDays }}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Hours:</span>
+              <span>{{ selectedTrainer.workStart }} - {{ selectedTrainer.workEnd }}</span>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="modal-footer">
+        <button class="btn-book" (click)="bookSession(selectedTrainer.id)">📅 Book Session</button>
+        <button class="btn-close" (click)="closeProfile()">Close</button>
+      </div>
+    </div>
+  </div>
+}

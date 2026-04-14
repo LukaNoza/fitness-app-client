@@ -1,0 +1,51 @@
+<div class="modal-overlay" (click)="close()">
+  <div class="modal review-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>⭐ Rate Your Session</h2>
+      <button class="close-btn" (click)="close()">✖</button>
+    </div>
+    
+    <div class="modal-body">
+      <p class="trainer-name">Trainer: <strong>{{ trainerName }}</strong></p>
+      <p class="booking-date">Session: {{ bookingDate | date:'mediumDate' }}</p>
+      
+      <!-- Star Rating -->
+      <div class="rating-section">
+        <label>Your Rating</label>
+        <div class="stars">
+          @for (star of [1,2,3,4,5]; track star) {
+            <span 
+              class="star" 
+              [class.active]="star <= rating"
+              (click)="setRating(star)">
+              ★
+            </span>
+          }
+        </div>
+      </div>
+      
+      <!-- Comment -->
+      <div class="comment-section">
+        <label>Your Review (Optional)</label>
+        <textarea 
+          [(ngModel)]="comment" 
+          placeholder="Share your experience with this trainer..."
+          rows="4"></textarea>
+      </div>
+      
+      <!-- Error Message -->
+      @if (errorMessage) {
+        <div class="error-message">
+          ❌ {{ errorMessage }}
+        </div>
+      }
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-cancel" (click)="close()">Cancel</button>
+      <button class="btn-submit" (click)="submitReview()" [disabled]="rating === 0 || submitting">
+        {{ submitting ? 'Submitting...' : 'Submit Review' }}
+      </button>
+    </div>
+  </div>
+</div>

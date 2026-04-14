@@ -1,0 +1,243 @@
+<div class="pt-landing">
+  
+  <!-- Sticky Back Button -->
+  <div class="sticky-back-button">
+    <button (click)="goBackToMain()" class="btn-back-main">
+      ← Back to Main Page
+    </button>
+  </div>
+  
+  <!-- ========================================== -->
+  <!-- 1. HERO SECTION -->
+  <!-- ========================================== -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title animate-fade-up">
+        Transform Your Body with <span class="gradient-text">Personal Training</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up delay-1">
+        Custom workouts, nutrition guidance, and expert coaching — all tailored to you
+      </p>
+      <button class="btn-hero animate-fade-up delay-2" (click)="bookNow()">
+        📅 Book Your First Session
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">{{ stats.happyClients }}+</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ stats.expertTrainers }}+</span>
+        <span class="stat-label">Expert Trainers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ stats.sessionsCompleted }}+</span>
+        <span class="stat-label">Sessions Completed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 2. BENEFITS SECTION -->
+  <!-- ========================================== -->
+  <section class="benefits-section animate-on-scroll">
+    <h2 class="section-title">Why Choose Personal Training?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">📋</div>
+        <h3>Personalized Plan</h3>
+        <p>Workouts designed specifically for your goals and fitness level</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Faster Results</h3>
+        <p>Get results 2x faster with expert guidance and accountability</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Injury Prevention</h3>
+        <p>Proper form and technique to keep you safe and injury-free</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Motivation & Accountability</h3>
+        <p>Stay on track with regular check-ins and progress tracking</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. TRAINERS SECTION -->
+  <!-- ========================================== -->
+  <section class="trainers-section animate-on-scroll">
+    <h2 class="section-title">Meet Your Expert Trainers</h2>
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <div class="trainer-image">
+          <div class="trainer-avatar">🏋️</div>
+        </div>
+        <h3>Giorgi Mamladze</h3>
+        <p class="trainer-specialty">💪 Bodybuilding Specialist</p>
+        <p class="trainer-exp">8 years experience</p>
+        <div class="trainer-stats">
+          <span>⭐ 4.8</span>
+          <span>📅 200+ sessions</span>
+        </div>
+        <button class="btn-trainer" (click)="viewTrainer(1)">View Profile →</button>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-image">
+          <div class="trainer-avatar">🏋️‍♀️</div>
+        </div>
+        <h3>Nino Beridze</h3>
+        <p class="trainer-specialty">🔥 Crossfit & HIIT</p>
+        <p class="trainer-exp">5 years experience</p>
+        <div class="trainer-stats">
+          <span>⭐ 4.9</span>
+          <span>📅 150+ sessions</span>
+        </div>
+        <button class="btn-trainer" (click)="viewTrainer(2)">View Profile →</button>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-image">
+          <div class="trainer-avatar">🧘</div>
+        </div>
+        <h3>Aether Bakadze</h3>
+        <p class="trainer-specialty">🧘 Yoga & Flexibility</p>
+        <p class="trainer-exp">5 years experience</p>
+        <div class="trainer-stats">
+          <span>⭐ 4.7</span>
+          <span>📅 120+ sessions</span>
+        </div>
+        <button class="btn-trainer" (click)="viewTrainer(3)">View Profile →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. HOW IT WORKS -->
+  <!-- ========================================== -->
+  <section class="how-it-works animate-on-scroll">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+      <div class="progress-line"></div>
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-icon">📅</div>
+        <h3>Book a Session</h3>
+        <p>Choose your trainer and schedule your first session</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-icon">🤝</div>
+        <h3>Meet Your Trainer</h3>
+        <p>Get to know your trainer and discuss your goals</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-icon">📋</div>
+        <h3>Get Custom Plan</h3>
+        <p>Receive a personalized workout and nutrition plan</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-icon">💪</div>
+        <h3>Start Training</h3>
+        <p>Transform your body with expert guidance</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. TESTIMONIALS -->
+  <!-- ========================================== -->
+  <section class="testimonials-section animate-on-scroll">
+    <h2 class="section-title">Success Stories</h2>
+    <div class="testimonials-carousel">
+      <button class="carousel-btn prev" (click)="prevTestimonial()">◀</button>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="testimonial-text">
+            "{{ testimonials[currentTestimonial].text }}"
+          </div>
+          <div class="testimonial-author">
+            <strong>{{ testimonials[currentTestimonial].author }}</strong>
+            <span>⭐ {{ testimonials[currentTestimonial].rating }}</span>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn next" (click)="nextTestimonial()">▶</button>
+    </div>
+    <div class="testimonial-dots">
+      @for (t of testimonials; track $index) {
+        <span class="dot" 
+              [class.active]="$index === currentTestimonial"
+              (click)="goToTestimonial($index)"></span>
+      }
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. PRICING -->
+  <!-- ========================================== -->
+  <section class="pricing-section animate-on-scroll">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Single Session</h3>
+        <div class="price">80 ₾</div>
+        <ul>
+          <li>✓ 1-hour session</li>
+          <li>✓ Personalized workout</li>
+          <li>✓ Form correction</li>
+          <li>✗ Nutrition guidance</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Book Now</button>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3>Monthly Plan</h3>
+        <div class="price">600 ₾</div>
+        <ul>
+          <li>✓ 8 sessions per month</li>
+          <li>✓ Personalized workout plan</li>
+          <li>✓ Nutrition guidance</li>
+          <li>✓ Progress tracking</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Book Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Premium Coaching</h3>
+        <div class="price">1200 ₾</div>
+        <ul>
+          <li>✓ Unlimited sessions</li>
+          <li>✓ 24/7 chat support</li>
+          <li>✓ Meal planning</li>
+          <li>✓ Weekly check-ins</li>
+        </ul>
+        <button class="btn-pricing" (click)="bookNow()">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. FINAL CTA -->
+  <!-- ========================================== -->
+  <section class="final-cta animate-on-scroll">
+    <div class="cta-content">
+      <h2>Start Your Fitness Journey Today</h2>
+      <p>Join hundreds of happy clients who transformed their lives</p>
+      <button class="btn-final" (click)="bookNow()">🚀 Book Now</button>
+    </div>
+  </section>
+
+  <!-- Sticky CTA Button -->
+  <div class="sticky-cta" [class.visible]="isSticky && !isAtBottom" [class.hide]="isAtBottom">
+    <button (click)="bookNow()" class="btn-sticky">
+      📅 Book Now
+    </button>
+  </div>
+
+</div>

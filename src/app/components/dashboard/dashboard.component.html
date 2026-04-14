@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>⚡ STAND STATISTICS ⚡</h1>
+    <p>User Fitness Stand Stats</p>
+  </div>
+  
+  <div class="dashboard-grid">
+    <!-- Radar Chart -->
+    <div class="chart-card">
+      <app-radar-chart
+        [chartTitle]="'USER STAND'"      
+        [stats]="userStats"
+        [labels]="statLabels">
+      </app-radar-chart>
+    </div>
+    
+    <!-- Stats Cards -->
+    <div class="stats-card">
+      <h3>📊 STATS DETAILS</h3>
+      <div class="stats-list">
+        @for (stat of statLabels; track $index) {
+          <div class="stat-item">
+            <span class="stat-name">{{ stat }}</span>
+            <div class="stat-bar-container">
+              <div class="stat-bar" [style.width.%]="userStats[$index]"></div>
+            </div>
+            <span class="stat-grade">{{ getGrade(userStats[$index]) }}</span>
+            <span class="stat-value">{{ userStats[$index] }}%</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  
+  <!-- Training Recommendations -->
+  <div class="recommendations-card">
+    <h3>🎯 RECOMMENDATIONS</h3>
+    <div class="recommendations-grid">
+      @for (rec of recommendations; track $index) {
+        <div class="rec-item">
+          <span class="rec-icon">{{ rec.icon }}</span>
+          <div class="rec-content">
+            <strong>{{ rec.title }}</strong>
+            <p>{{ rec.message }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

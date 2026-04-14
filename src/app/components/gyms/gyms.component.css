@@ -1,0 +1,579 @@
+ /* GYMS COMPONENT - PURPLE GLASSMORPHISM  */
+
+.container {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px);
+    border-radius: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.header h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #5a67d8;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ADD BUTTON */
+.add-gym-btn {
+    text-align: right;
+    margin-bottom: 24px;
+}
+
+.btn-add {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* STATS CARDS - გალამაზებული ხაზებით */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    padding: 24px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ზედა დეკორატიული ხაზი - გრადიენტური */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 4px 4px 0 0;
+}
+
+/* ქვედა დეკორატიული წერტილები */
+.stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+    border-radius: 3px;
+    opacity: 0.6;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+    background: white;
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.stat-card:hover::after {
+    width: 60px;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: #4a5568;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========================================== */
+/* TABLE WRAPPER */
+/* ========================================== */
+.table-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow-x: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* ========================================== */
+/* TABLE */
+/* ========================================== */
+.gyms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 800px;
+}
+
+.gyms-table th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gyms-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #1e293b;
+    transition: all 0.2s ease;
+}
+
+.gyms-table tbody tr {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.gyms-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    transform: scale(1.01);
+}
+
+.gyms-table tr.inactive {
+    opacity: 0.6;
+    background: rgba(254, 226, 226, 0.2);
+}
+
+.id-cell {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.hours-cell {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #5a67d8;
+    font-weight: 500;
+}
+
+/* ========================================== */
+/* STATUS BADGE - MODERN DESIGN */
+/* ========================================== */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px 5px 10px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Active Status - Green */
+.status-badge.active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    border: none;
+}
+
+/* Active Status Icon */
+.status-badge.active::before {
+    content: '●';
+    font-size: 0.7rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 2px rgba(255,255,255,0.5);
+    }
+    50% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    }
+}
+
+/* Inactive Status - Gray */
+.status-badge.inactive {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(71, 85, 105, 0.2);
+    border: none;
+}
+
+/* Inactive Status Icon */
+.status-badge.inactive::before {
+    content: '○';
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ========================================== */
+/* ACTION BUTTONS - ნათელი და კონტრასტული */
+/* ========================================== */
+.actions-cell {
+    white-space: nowrap;
+}
+
+.btn-edit, .btn-delete {
+    padding: 6px 14px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Edit ღილაკი - ყვითელი, შავი ასოები */
+.btn-edit {
+    background: #ffc107;
+    color: #1e293b;
+}
+
+.btn-edit:hover {
+    background: #ffb300;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
+}
+
+/* Delete ღილაკი - წითელი, თეთრი ასოები */
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4);
+}
+
+/* ========================================== */
+/* LOADING */
+/* ========================================== */
+.loading {
+    text-align: center;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #667eea;
+    border-right: 3px solid #764ba2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================== */
+/* ERROR */
+/* ========================================== */
+.error {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    padding: 20px 24px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 500;
+    border-left: 4px solid #ef4444;
+}
+
+/* ========================================== */
+/* MODAL */
+/* ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal {
+    background: white;
+    padding: 32px;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal h3 {
+    margin-bottom: 24px;
+    color: #1e293b;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-left: 4px solid #667eea;
+    padding-left: 16px;
+}
+
+.modal input, 
+.modal select {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.modal input:focus,
+.modal select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ========================================== */
+/* FORM ROW */
+/* ========================================== */
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    margin-bottom: 0;
+}
+
+/* ========================================== */
+/* MODAL BUTTONS */
+/* ========================================== */
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.modal-buttons button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.modal-buttons button:first-child {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.modal-buttons button:first-child:hover {
+    background: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.modal-buttons button:last-child {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.modal-buttons button:last-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* ========================================== */
+/* SCROLLBAR */
+/* ========================================== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 16px;
+    }
+    
+    .header {
+        padding: 20px 16px;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stat-card {
+        padding: 18px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .gyms-table th,
+    .gyms-table td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .add-gym-btn {
+        text-align: center;
+    }
+    
+    .btn-add {
+        width: 100%;
+    }
+    
+    .btn-edit, .btn-delete {
+        padding: 4px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .modal {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .modal h3 {
+        font-size: 1.2rem;
+    }
+}

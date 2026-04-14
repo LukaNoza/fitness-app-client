@@ -1,1 +1,1018 @@
-/* You can add global styles to this file, and also import other style files */
+/* ========================================== */
+/* CSS VARIABLES - DARK THEME (DEFAULT) */
+/* ========================================== */
+:root,
+body.dark-theme {
+    /* Background Colors */
+    --bg-primary: #0a0a1a;
+    --bg-secondary: rgba(10, 10, 26, 0.75);
+    --bg-card: rgba(20, 20, 45, 0.5);
+    --bg-header: rgba(20, 20, 45, 0.5);
+    
+    /* Border Colors */
+    --border-color: rgba(139, 92, 246, 0.2);
+    --border-hover: rgba(139, 92, 246, 0.4);
+    
+    /* Text Colors */
+    --text-primary: #e0e0ff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #8080a0;
+    
+    /* Accent Colors */
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+    --accent-gradient-text: linear-gradient(135deg, #c084fc 0%, #60a5fa 100%);
+    
+    /* UI Elements */
+    --input-bg: rgba(10, 10, 25, 0.6);
+    --input-border: rgba(139, 92, 246, 0.3);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    
+    /* Status Colors */
+    --success-bg: rgba(16, 185, 129, 0.15);
+    --success-text: #34d399;
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --warning-text: #fbbf24;
+    --error-bg: rgba(239, 68, 68, 0.15);
+    --error-text: #f87171;
+    --info-bg: rgba(59, 130, 246, 0.15);
+    --info-text: #60a5fa;
+}
+
+/* ========================================== */
+/* CSS VARIABLES - LIGHT THEME */
+/* ========================================== */
+body.light-theme {
+    /* Background Colors */
+    --bg-primary: #f8fafc;
+    --bg-secondary: rgba(255, 255, 255, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-header: rgba(255, 255, 255, 0.75);
+    
+    /* Border Colors */
+    --border-color: rgba(139, 92, 246, 0.25);
+    --border-hover: rgba(139, 92, 246, 0.5);
+    
+    /* Text Colors */
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    /* Accent Colors */
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+    --accent-gradient-text: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    
+    /* UI Elements */
+    --input-bg: white;
+    --input-border: #cbd5e1;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    
+    /* Status Colors */
+    --success-bg: #d1fae5;
+    --success-text: #065f46;
+    --warning-bg: #fef3c7;
+    --warning-text: #b45309;
+    --error-bg: #fee2e2;
+    --error-text: #991b1b;
+    --info-bg: #dbeafe;
+    --info-text: #1e40af;
+}
+
+/* ========================================== */
+/* GLOBAL STYLES */
+/* ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.2s ease;
+    color: var(--text-primary);
+}
+
+/* ========================================== */
+/* BACKGROUND EFFECTS - DARK THEME ONLY */
+/* ========================================== */
+body.dark-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 20% 40%, rgba(139, 92, 246, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.dark-theme::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Light Theme - minimal background */
+body.light-theme::before,
+body.light-theme::after {
+    display: none;
+}
+
+/* ========================================== */
+/* NEON LINES - BOLD VERSION */
+/* ========================================== */
+.neon-lines-horizontal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 40px,
+        rgba(139, 92, 246, 0.15) 40px,
+        rgba(6, 182, 212, 0.1) 41px,
+        transparent 41px,
+        transparent 80px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.neon-lines-vertical {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(139, 92, 246, 0.12) 40px,
+        rgba(6, 182, 212, 0.08) 41px,
+        transparent 41px,
+        transparent 80px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Light Theme - also bold */
+body.light-theme .neon-lines-horizontal {
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 35px,
+        rgba(16, 185, 129, 0.3) 35px,
+        rgba(20, 184, 166, 0.25) 36px,
+        transparent 36px,
+        transparent 70px
+    );
+}
+
+body.light-theme .neon-lines-vertical {
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 35px,
+        rgba(16, 185, 129, 0.25) 35px,
+        rgba(20, 184, 166, 0.2) 36px,
+        transparent 36px,
+        transparent 70px
+    );
+}
+/* ========================================== */
+/* GLOW EFFECT */
+/* ========================================== */
+.glow-effect {
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    right: -20%;
+    bottom: -20%;
+    background: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+    animation: subtlePulse 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.light-theme .glow-effect {
+    background: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+    animation: subtlePulse 12s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+/* ========================================== */
+/* MESH GRADIENT */
+/* ========================================== */
+.mesh-gradient {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: radial-gradient(circle at 60% 50%, rgba(139, 92, 246, 0.06) 0%, rgba(6, 182, 212, 0.03) 30%, transparent 70%);
+    animation: rotateMesh 40s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.light-theme .mesh-gradient {
+    background: radial-gradient(circle at 60% 50%, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.01) 30%, transparent 70%);
+}
+
+@keyframes rotateMesh {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================== */
+/* NOISE TEXTURE */
+/* ========================================== */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.light-theme .noise {
+    opacity: 0.2;
+}
+
+/* ========================================== */
+/* GLASSMORPHISM CONTAINERS */
+/* ========================================== */
+.container,
+.trainers-container,
+.gyms-container,
+.bookings-container,
+.booking-page {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    margin: 20px auto;
+    padding: 24px;
+    max-width: 1400px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.container:hover,
+.trainers-container:hover,
+.gyms-container:hover,
+.bookings-container:hover {
+    border-color: var(--border-hover);
+}
+
+/* ========================================== */
+/* HEADER */
+/* ========================================== */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 24px;
+    background: var(--bg-header);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.header h1 {
+    font-size: 2rem;
+    background: var(--accent-gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ========================================== */
+/* STATS CARDS */
+/* ========================================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    padding: 24px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-cyan), transparent);
+    opacity: 0.6;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--accent-gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    margin-top: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========================================== */
+/* TABLE */
+/* ========================================== */
+.table-wrapper {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.users-table,
+.gyms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 800px;
+}
+
+.users-table th,
+.gyms-table th {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--text-primary);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.users-table td,
+.gyms-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.users-table tbody tr:hover,
+.gyms-table tbody tr:hover {
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.id-cell {
+    font-weight: bold;
+    color: var(--accent-purple);
+}
+
+/* ========================================== */
+/* BADGES */
+/* ========================================== */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 70px;
+}
+
+.badge-admin {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-trainer {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-client {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.inactive {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ========================================== */
+/* BUTTONS */
+/* ========================================== */
+.btn-add {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+    color: var(--accent-purple);
+    border: 1px solid var(--border-color);
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.btn-edit, .btn-delete {
+    padding: 5px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.btn-edit:hover {
+    background: rgba(245, 158, 11, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-delete:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/* THEME SWITCHER BUTTON */
+/* ========================================== */
+.theme-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.theme-btn:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/* TRAINER CARDS */
+/* ========================================== */
+.trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.trainer-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.trainer-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    background: rgba(139, 92, 246, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-icon {
+    font-size: 1.8rem;
+}
+
+.trainer-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.specialization {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.price {
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+.rating {
+    color: #fbbf24;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-book, .btn-profile {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.btn-book {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+    color: var(--accent-purple);
+    border: 1px solid var(--border-color);
+}
+
+.btn-book:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
+    transform: translateY(-1px);
+}
+
+.btn-profile {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-profile:hover {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent-purple);
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/* BOOKINGS GRID */
+/* ========================================== */
+.bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
+}
+
+.booking-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.booking-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+}
+
+.booking-header {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.booking-status.pending {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+.booking-status.confirmed {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.booking-date {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.booking-body {
+    padding: 20px;
+}
+
+.booking-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.booking-footer {
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-confirm {
+    width: 100%;
+    padding: 10px;
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background: rgba(16, 185, 129, 0.25);
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/* MODAL */
+/* ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(16px);
+    padding: 28px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.3s ease;
+}
+
+.modal h3 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-left: 3px solid var(--accent-purple);
+    padding-left: 14px;
+}
+
+.modal input, 
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.modal-buttons button:first-child {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.modal-buttons button:first-child:hover {
+    background: var(--bg-header);
+}
+
+.modal-buttons button:last-child {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+    color: var(--accent-purple);
+    border: 1px solid var(--border-color);
+}
+
+.modal-buttons button:last-child:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+/* ========================================== */
+/* LOADING */
+/* ========================================== */
+.loading {
+    text-align: center;
+    padding: 50px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    border-top: 2px solid var(--accent-purple);
+    border-right: 2px solid var(--accent-cyan);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================== */
+/* ERROR */
+/* ========================================== */
+.error {
+    background: var(--error-bg);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--error-text);
+    padding: 15px 20px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+/* ========================================== */
+/* SCROLLBAR */
+/* ========================================== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-card);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
+    border-radius: 10px;
+}
+
+/* ========================================== */
+/* ANIMATIONS */
+/* ========================================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================== */
+/* FORM ROW */
+/* ========================================== */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+@media (max-width: 768px) {
+    .container,
+    .trainers-container,
+    .gyms-container,
+    .bookings-container,
+    .booking-page {
+        margin: 12px;
+        padding: 16px;
+    }
+    
+    .header {
+        padding: 20px 16px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .trainers-grid,
+    .bookings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .modal {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .modal h3 {
+        font-size: 1.1rem;
+    }
+}
