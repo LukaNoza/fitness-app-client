@@ -135,10 +135,13 @@ body.light-theme::after {
     display: none;
 }
 
+
+
+
 /* ========================================== */
 /* NEON LINES - BOLD VERSION */
 /* ========================================== */
-.neon-lines-horizontal {
+/* .neon-lines-horizontal {
     position: fixed;
     top: 0;
     left: 0;
@@ -173,10 +176,10 @@ body.light-theme::after {
     );
     pointer-events: none;
     z-index: 0;
-}
+} */
 
 /* Light Theme - also bold */
-body.light-theme .neon-lines-horizontal {
+/* body.light-theme .neon-lines-horizontal {
     background-image: repeating-linear-gradient(
         transparent,
         transparent 35px,
@@ -197,10 +200,14 @@ body.light-theme .neon-lines-vertical {
         transparent 36px,
         transparent 70px
     );
-}
+} */
 /* ========================================== */
 /* GLOW EFFECT */
 /* ========================================== */
+
+
+
+
 .glow-effect {
     position: fixed;
     top: -20%;
@@ -1016,3 +1023,6 @@ body.light-theme .noise {
         font-size: 1.1rem;
     }
 }
+
+
+
