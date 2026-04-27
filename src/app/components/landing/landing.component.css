@@ -482,12 +482,12 @@
 }
 
 .amenities-text h2, h5{
-  color: var(--text-muted);;
+  color: var(--text-muted);
 }
 
 .amenity-item p{
   margin-top: 1rem;
-  color: var(--border) ;
+  color: var(--text-muted) ;
 }
 
 .amenity-item {
