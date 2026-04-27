@@ -307,7 +307,7 @@
 }
 
 .about h2 {
-  color: #1e293b !important;
+  color: var(--text-muted);;
 }
 
 .about-cards {
