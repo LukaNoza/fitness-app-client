@@ -722,6 +722,231 @@
 
 
 
+/* ========================================== */
+/* HERO CTA BUTTONS - 3D GLASS */
+/* ========================================== */
+
+/* Container for 3D perspective */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* ========================================== */
+/* PRIMARY BUTTON - "Start Today →" */
+/* ========================================== */
+.hero-actions .btn-primary {
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  background: linear-gradient(
+    to bottom,
+    rgba(139, 92, 246, 0.25),
+    rgba(139, 92, 246, 0.1)
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(139, 92, 246, 0.3);
+  transform: rotateX(15deg) translateZ(0);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: relative;
+  cursor: pointer;
+  animation: pulse-glow 2s infinite ease-in-out;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  perspective: 1000px;
+}
+
+/* Shine effect */
+.hero-actions .btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50px;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shine-move 3s infinite linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ground shadow */
+.hero-actions .btn-primary::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 10px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.3) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+}
+
+/* Hover */
+.hero-actions .btn-primary:hover {
+  transform: rotateX(0deg) translateZ(15px) scale(1.05);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.5);
+  background: linear-gradient(
+    to bottom,
+    rgba(139, 92, 246, 0.35),
+    rgba(139, 92, 246, 0.2)
+  );
+}
+
+/* Active */
+.hero-actions .btn-primary:active {
+  transform: rotateX(0deg) translateZ(-5px) scale(0.95);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+/* Arrow */
+.hero-actions .btn-primary .btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-actions .btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ========================================== */
+/* OUTLINE BUTTON - "About Me" */
+/* ========================================== */
+.hero-actions .btn-outline {
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: rotateX(15deg) translateZ(0);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  cursor: pointer;
+  color: #e0e0ff;
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light theme */
+body.light-theme .hero-actions .btn-outline {
+  color: #1e293b;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+/* Shine effect */
+.hero-actions .btn-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50px;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(139, 92, 246, 0.1),
+    rgba(139, 92, 246, 0.15),
+    rgba(139, 92, 246, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shine-move 4s infinite linear;
+  pointer-events: none;
+}
+
+/* Hover */
+.hero-actions .btn-outline:hover {
+  transform: rotateX(0deg) translateZ(10px) scale(1.03);
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+  background: rgba(139, 92, 246, 0.08);
+  color: #ffffff;
+}
+
+body.light-theme .hero-actions .btn-outline:hover {
+  color: #1e293b;
+  background: rgba(139, 92, 246, 0.12);
+}
+
+/* Active */
+.hero-actions .btn-outline:active {
+  transform: rotateX(0deg) translateZ(-3px) scale(0.97);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================== */
+/* ANIMATIONS */
+/* ========================================== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.4),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.4),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      0 0 35px rgba(139, 92, 246, 0.5);
+  }
+}
+
+@keyframes shine-move {
+  0% {
+    left: -50px;
+  }
+  100% {
+    left: 250px;
+  }
+}
+
+
 @media (max-width: 768px) {
   .about-inner,
   .amenities-inner {
