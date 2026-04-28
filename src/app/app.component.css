@@ -507,3 +507,114 @@ body.light-theme .theme-btn:hover {
 }
 
 
+
+
+
+/* ========================================== */
+/* MOBILE MENU BUTTON                         */
+/* ========================================== */
+.mobile-menu-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 992px) {
+  /* მალავს desktop ღილაკებს */
+  .nav-links {
+    display: none;
+  }
+  
+  .user-info,
+  .logout-btn,
+  .profile-btn,
+  .theme-btn {
+    display: none;
+  }
+  
+  /* აჩვენებს mobile menu button-ს */
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+/* ========================================== */
+/* MOBILE MENU PANEL                          */
+/* ========================================== */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(10, 10, 26, 0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 12px 16px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #e0e0ff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu button:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.mobile-menu-divider {
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  margin: 4px 0;
+}
+
+/* Dark theme */
+body.dark-theme .mobile-menu button {
+  color: #e0e0ff;
+}
+
+/* Light theme */
+body.light-theme .mobile-menu {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+body.light-theme .mobile-menu button {
+  color: #1e293b;
+}
+
+body.light-theme .mobile-menu-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #1e293b;
+}

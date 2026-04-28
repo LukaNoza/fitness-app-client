@@ -108,6 +108,14 @@ export class AppComponent implements OnInit {
       this.unreadCount = count;
     });
   }
+  
+  toggleMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMenu() {
+    this.mobileMenuOpen = false;
+  }
 
   updateActiveTabFromUrl(): void {
   const url = this.router.url;
@@ -130,7 +138,7 @@ export class AppComponent implements OnInit {
   }
 
   console.log('✅ Active tab set to:', this.activeTab);
-}
+  }
 
   // Theme Switcher მეთოდი
   toggleTheme() {

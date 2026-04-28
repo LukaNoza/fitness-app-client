@@ -19,6 +19,10 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  goBack(): void {
+    this.router.navigate(['/']);
+  }
+
   onSubmit() {
     if (!this.email || !this.password) {
       this.error = 'Please fill all fields';
