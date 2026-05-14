@@ -34,4 +34,14 @@ export const routes: Routes = [
   { path: 'booking-form', component: BookingFormComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    {
+    path: '',
+    loadComponent: () => import('./components/landing/landing.component')
+      .then(m => m.LandingComponent)  
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./components/login/login.component')
+      .then(m => m.LoginComponent)
+  },
 ];

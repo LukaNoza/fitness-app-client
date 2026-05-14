@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements AfterViewInit {
-  // ==========================================
-  // DATA (your existing data)
-  // ==========================================
+
+  // DATA (my existing data)
+  
   features = [
     { icon: '🏋️', title: 'Personal Training', tag: 'Certified', description: 'Get one-on-one training sessions with expert fitness coaches tailored to your goals.' },
     { icon: '💬', title: 'Live Chat', tag: 'Real-time', description: 'Communicate with your trainer in real-time, ask questions, and get instant feedback.' },
