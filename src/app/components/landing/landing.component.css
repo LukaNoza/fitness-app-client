@@ -650,19 +650,17 @@
 .fade-up {
   opacity: 0;
   transform: translate3d(40px);  
-  transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  /* will-change: transform, opacity;       */
-  backface-visibility: hidden; 
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .fade-up.in-view {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: translateY(0);
 }
 
 .fade-in {
   opacity: 0;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .fade-in.in-view {
