@@ -108,6 +108,9 @@
               <button (click)="cancelBooking(booking.id)" class="btn-cancel">
                 ❌ Cancel
               </button>
+              
+              <!-- 👇 CHAT BUTTON FOR CONFIRMED BOOKINGS - REMOVED -->
+              
             }
             
             @if (booking.status === 'Completed') {
@@ -120,9 +123,14 @@
               } @else {
                 <span class="completed-badge">✓ Session Completed</span>
               }
+              
+              <!-- 👇 CHAT BUTTON FOR COMPLETED BOOKINGS - KEPT -->
+              <app-chat 
+                [trainerId]="booking.trainerId"
+                [clientId]="booking.clientId"
+                [otherUserName]="isTrainer ? booking.clientName : booking.trainerName">
+              </app-chat>
             }
-            
-            <!-- 🔥 Cancelled სტატუსი აღარ ჩანს, რადგან ვფილტრავთ -->
           </div>
           
         </div>

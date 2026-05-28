@@ -1,0 +1,37 @@
+<!-- Chat Floating Button -->
+@if (!isOpen) {
+  <div class="chat-button" (click)="openChat()">
+    <span class="chat-icon">💬</span>
+    <span class="chat-label"> Chat with {{ otherUserName }}</span>
+  </div>
+}
+
+<!-- Chat Window -->
+@if (isOpen) {
+  <div class="chat-window">
+    <div class="chat-header">
+      <h3>💬 {{ otherUserName }}</h3>
+      <button class="close-btn" (click)="closeChat()">✖</button>
+    </div>
+    
+    <div class="chat-messages" #chatMessages>
+      @for (msg of messages; track $index) {
+        <div class="message" [class.own]="msg.userId === currentUserId">
+          <div class="message-bubble">
+            <div class="message-text">{{ msg.message }}</div>
+            <div class="message-time">{{ msg.timestamp | date:'shortTime' }}</div>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <div class="chat-input">
+      <input 
+        type="text" 
+        [(ngModel)]="newMessage" 
+        placeholder="Type a message..."
+        (keyup.enter)="sendMessage()">
+      <button (click)="sendMessage()">📤 Send</button>
+    </div>
+  </div>
+}

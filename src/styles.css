@@ -1026,3 +1026,101 @@ body.light-theme .noise {
 
 
 
+
+
+
+
+/* ========================================== */
+/* FIX: Input Text Visibility - Global Fix */
+/* ========================================== */
+
+/* All form inputs */
+input, 
+textarea, 
+select,
+.form-input,
+.email-input,
+.custom-select,
+.date-input,
+.modal input,
+.modal select,
+.modal textarea,
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    color: var(--text-primary) !important;
+    background: var(--input-bg) !important;
+}
+
+/* Dark theme specific - ensure text is bright */
+body.dark-theme input, 
+body.dark-theme textarea, 
+body.dark-theme select,
+body.dark-theme .form-input,
+body.dark-theme .email-input,
+body.dark-theme .custom-select,
+body.dark-theme .date-input,
+body.dark-theme .modal input,
+body.dark-theme .modal select,
+body.dark-theme .modal textarea {
+    color: #e0e0ff !important;
+    background: rgba(10, 10, 25, 0.8) !important;
+}
+
+/* Light theme specific */
+body.light-theme input, 
+body.light-theme textarea, 
+body.light-theme select,
+body.light-theme .form-input,
+body.light-theme .email-input,
+body.light-theme .custom-select,
+body.light-theme .date-input {
+    color: #1e293b !important;
+    background: white !important;
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1;
+}
+
+body.dark-theme ::placeholder {
+    color: #64748b !important;
+}
+
+body.light-theme ::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Input focus states */
+input:focus, 
+textarea:focus, 
+select:focus {
+    border-color: var(--accent-purple) !important;
+    outline: none;
+}
+
+/* Email input specific (for booking form) */
+.email-input {
+    color: var(--text-primary) !important;
+}
+
+body.dark-theme .email-input {
+    color: #e0e0ff !important;
+}
+
+body.light-theme .email-input {
+    color: #1e293b !important;
+}
+
+/* Datalist options styling */
+datalist option {
+    color: #1e293b !important;
+    background: white !important;
+}
+
+body.dark-theme datalist option {
+    color: #e0e0ff !important;
+    background: #1e293b !important;
+}

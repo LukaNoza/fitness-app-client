@@ -5,11 +5,12 @@ import { AuthService } from '../../services/auth.service';
 import { TrainerService } from '../../services/trainer.service';
 import { ReviewService } from '../../services/review.service';
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-bookings',
   standalone: true,
-  imports: [CommonModule, ReviewModalComponent],
+  imports: [CommonModule, ReviewModalComponent, ChatComponent],
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css']
 })
